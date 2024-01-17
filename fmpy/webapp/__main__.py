@@ -1,6 +1,10 @@
+'''
+    
+'''
+
 import os
 import flask
-from dash import dcc, html, Dash
+from dash import dcc, html, Dash # dash : 웹 어플리케이션 프레임워크(데이터 시각화/대시보드에 Good)
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 import fmpy
@@ -29,6 +33,10 @@ has_documentation = os.path.isdir(os.path.join(unzipdir, 'documentation'))
 has_model_png = os.path.isfile(os.path.join(unzipdir, 'model.png'))
 
 app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP])
+# Dash(__name__) : Dash 어플리케이션 객체를 생성. __name__ : 현재 모듈 이름,
+# Flask의 패턴 사용. Dash 객체를 app이라는 변수에 할당.
+# dbc : Dash Bootstrap Components 
+
 
 app.title = model_description.modelName
 
@@ -37,7 +45,7 @@ rows = []
 states = []
 
 parameters = args.start_values
-
+print(parameters) # parameters 출력
 if parameters is None:
     parameters = []
     for variable in model_description.modelVariables:
